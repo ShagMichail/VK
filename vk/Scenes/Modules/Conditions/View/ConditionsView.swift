@@ -105,7 +105,7 @@ final class ConditionsView: UIView {
         button.layer.shadowOffset = CGSize(width: 0.0, height: 10.0)
         button.layer.shadowOpacity = 0.3
         button.layer.shadowRadius = 10
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(didTapSimulateButton), for: .touchUpInside)
         return button
     }()
@@ -125,7 +125,6 @@ final class ConditionsView: UIView {
     }
     
     private func setupElement() {
-//        headerView.backButton.addTarget(self, action: #selector(didTapMenuButton), for: .touchUpInside)
         quantityTextField.delegate = textFieldDelegat
         numberContactsTextField.delegate = textFieldDelegat
         periodContactsTextField.delegate = textFieldDelegat

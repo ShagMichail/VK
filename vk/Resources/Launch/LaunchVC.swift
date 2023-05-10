@@ -10,7 +10,7 @@ import UIKit
 class LaunchVC: UIViewController {
     
     private let imageView: UIImageView = {
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 300, height: 175))
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 300, height: 176))
         imageView.image = UIImage(named: "logo")
         return imageView
     }()

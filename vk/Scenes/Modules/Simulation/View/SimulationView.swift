@@ -47,6 +47,13 @@ final class SimulationView: UIView {
         return cv
     }()
     
+    lazy var containerView: UIView = {
+        var view = UIView()
+        view.layer.cornerRadius = 10
+        view.layer.borderWidth = 3
+        return view
+    }()
+    
     lazy var healthyLabel: UILabel = {
         var label = UILabel()
         label.font = .systemFont(ofSize: 20)
@@ -81,6 +88,7 @@ final class SimulationView: UIView {
     private func addSubviews() {
         addSubview(headerView)
         addSubview(collectionView)
+        addSubview(containerView)
         addSubview(sickLabel)
         addSubview(healthyLabel)
     }
@@ -92,20 +100,27 @@ final class SimulationView: UIView {
             $0.height.equalTo(120)
         }
         
-        healthyLabel.snp.makeConstraints {
+        containerView.snp.makeConstraints {
             $0.top.equalTo(headerView.snp.bottom).inset(-10)
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(20)
+        }
+        
+        healthyLabel.snp.makeConstraints {
+            $0.top.equalTo(containerView.snp.top).inset(10)
             $0.height.equalTo(30)
-            $0.leading.equalTo(safeAreaLayoutGuide).inset(20)
+            $0.leading.equalTo(containerView.snp.leading).inset(20)
+            $0.bottom.equalTo(containerView.snp.bottom).inset(10)
         }
         
         sickLabel.snp.makeConstraints {
-            $0.top.equalTo(headerView.snp.bottom).inset(-10)
+            $0.top.equalTo(containerView.snp.top).inset(10)
             $0.height.equalTo(30)
-            $0.trailing.equalTo(safeAreaLayoutGuide).inset(20)
+            $0.trailing.equalTo(containerView.snp.trailing).inset(20)
+            $0.bottom.equalTo(containerView.snp.bottom).inset(10)
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(sickLabel.snp.bottom).inset(-10)
+            $0.top.equalTo(containerView.snp.bottom).inset(0)
             $0.bottom.equalTo(0)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(30)
         }
